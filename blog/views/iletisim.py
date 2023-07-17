@@ -2,6 +2,6 @@ from django.shortcuts import render
 
 def iletisim(request):
     context = {
-        "isim":"iletişim sayfasi"
+        "key": "başlık içerik naber"
     }
     return render(request, "pages/iletisim.html", context=context)
