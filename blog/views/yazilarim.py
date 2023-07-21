@@ -7,7 +7,7 @@ def yazilarim(request):
     yazilar = request.user.yazilar.order_by("-id")
 
     sayfa = request.GET.get('sayfa')
-    paginator = Paginator(yazilar,2)
+    paginator = Paginator(yazilar,5)
     
     context = {
         "yazilar": paginator.get_page(sayfa),
