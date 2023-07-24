@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+{% block title %} Kayıt {% endblock %}
+
+{% block content %}
+
+{% include "components/messages.html" %}
+<form method="POST">
+    {% csrf_token %}
+    {{form | crispy}}
+    <input class="btn btn-danger mt-3 mb-3" type="submit" value="Kaydol">
+</form>
+
+{% endblock %}

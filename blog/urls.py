@@ -1,15 +1,16 @@
 from django.urls import path
-from blog.views import iletisim, anasayfa, kategori, yazilarim, detay, yazi_ekle, yazi_guncelle, yazi_sil, yorum_sil
-
+from blog.views import IletisimView, anasayfa, KategoriView, yazilarim, DetayView, YaziEkleView, YaziGuncelleView, YaziSilView, yorum_sil
+from django.views.generic import TemplateView
 
 urlpatterns = [
-    path("iletisim/", iletisim, name="iletisim"),
+    path("iletisim/", IletisimView.as_view(), name="iletisim"),
+    path("hakkimda", TemplateView.as_view(template_name="pages/hakkimda.html"), name="hakkimda"),
     path("", anasayfa, name="anasayfa"),
-    path("kategori/<slug:kategoriSlug>", kategori, name="kategori"),
+    path("kategori/<slug:kategoriSlug>", KategoriView.as_view(), name="kategori"),
     path("yazilarim", yazilarim, name="yazilarim"),
-    path("detay/<slug:slug>", detay , name="detay"),
-    path("yazi-sil/<slug:slug>", yazi_sil , name="yazi-sil"),
+    path("detay/<slug:slug>", DetayView.as_view() , name="detay"),
+    path("yazi-sil/<slug:slug>", YaziSilView.as_view() , name="yazi-sil"),
     path("yorum-sil/<int:id>", yorum_sil , name="yorum-sil"),
-    path("yazi-ekle", yazi_ekle , name="yazi-ekle"),
-    path("yazi-guncelle/<slug:slug>", yazi_guncelle , name="yazi-guncelle"),
+    path("yazi-ekle", YaziEkleView.as_view() , name="yazi-ekle"),
+    path("yazi-guncelle/<slug:slug>", YaziGuncelleView.as_view() , name="yazi-guncelle"),
 ]

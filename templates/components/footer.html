@@ -1,5 +1,9 @@
 <div class="row">
     <div class="col-12">
-        <p>Tüm Hakları saklıdır.</p>
+        {% if request.user.is_authenticated %}
+            <p>Tüm Hakları saklıdır.</p>
+        {% else %}
+            <p>Tüm Hakları saklıdır. | <a href="{% url 'giris' %}"> Giriş </a> | <a href="{% url 'kayit' %}"> Kayıt </a></p>
+        {% endif %}
     </div>
 </div>

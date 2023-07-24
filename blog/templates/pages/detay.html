@@ -23,7 +23,9 @@
                 </p>
                 <p class="card-text">
                     <small class="text-muted"
-                        >Update date : {{yazi.duzenlenme_tarihi}}  
+                        >Update date : {{yazi.duzenlenme_tarihi}}
+                        <br>
+                        Yazar : <a href="{% url 'profil' username=yazi.yazar.username %}">{{ yazi.yazar.username }}</a>
                     </small>
                     {% if request.user == yazi.yazar %}
                     <p>
@@ -43,13 +45,15 @@
 {% if request.user.is_authenticated %}
 <form method="POST">
     {% csrf_token %}
-    {{ yorum_ekle_form | crispy}}
+    {{ yorum_ekleme_formu | crispy}}
     <input type="submit" value="Yorum yap" class="btn btn-primary mt-3">
 </form>
     
 {% else %}
 <p>Yorum yapmak için lütfen giriş yapınız.</p>
 {% endif %}
+
+{% include 'components/messages.html' %}
 
 {% for yorum in yorumlar %}
     <div class="card">
