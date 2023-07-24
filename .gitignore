@@ -3,3 +3,5 @@ db.sqlite3
 .vscode
 yazi_resimler
 media
+.env
+prod.sqlite3
