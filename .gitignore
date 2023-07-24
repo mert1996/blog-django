@@ -5,3 +5,4 @@ yazi_resimler
 media
 .env
 prod.sqlite3
+logs
